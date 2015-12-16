@@ -21,7 +21,8 @@ namespace Acme.Biz.Tests
             currentProduct.Description = "15-inch steel blade hand saw";
             currentProduct.ProductVendor.CompanyName = "ABC Corps";
 
-            var expected = "Hello Saw (1): 15-inch steel blade hand saw";
+            var expected = "Hello Saw (1): 15-inch steel blade hand saw" +
+                " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
@@ -36,7 +37,8 @@ namespace Acme.Biz.Tests
             //Arrange
             var currentProduct = new Product(1, "Saw",
                                  "15-inch steel blade hand saw");
-            var expected = "Hello Saw (1): 15-inch steel blade hand saw";
+            var expected = "Hello Saw (1): 15-inch steel blade hand saw" +
+                " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
@@ -56,7 +58,8 @@ namespace Acme.Biz.Tests
                 Description = "15-inch steel blade hand saw"
             };
 
-            var expected = "Hello Saw (1): 15-inch steel blade hand saw";
+            var expected = "Hello Saw (1): 15-inch steel blade hand saw" +
+                " Available on: ";
 
             //Act
             var actual = currentProduct.SayHello();
