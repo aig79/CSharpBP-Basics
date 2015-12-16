@@ -22,7 +22,7 @@ namespace Acme.Biz
         /// <param name="product">Product to order.</param>
         /// <param name="quantity">Quantity of the product to order</param>
         /// <returns></returns>
-        public bool PlaceOrder(Product product, int quantity)
+        public OperationResult PlaceOrder(Product product, int quantity)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
@@ -42,8 +42,8 @@ namespace Acme.Biz
             {
                 success = true;
             }
-
-            return success;
+            var operationResult = new OperationResult(success, orderText);
+            return operationResult;
         }
 
         /// <summary>
