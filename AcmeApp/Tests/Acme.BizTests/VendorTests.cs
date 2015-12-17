@@ -63,13 +63,31 @@ namespace Acme.Biz.Tests
             //Arrange
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true, 
+            var expected = new OperationResult(true,
                 "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12");
 
             //Act
             var actual = vendor.PlaceOrder(product, 12);
 
             //Assert
+            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Message, actual.Message);
+        }
+        [TestMethod()]
+        public void PlaceOrderTest_3Parameters()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Saw", "");
+            var expected = new OperationResult(true,
+                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "\r\nDeliver By: 12/25/2015");
+
+            //Act
+            var actual = vendor.PlaceOrder(product, 12,
+                new DateTimeOffset(2015, 12, 25, 0, 0, 0, new TimeSpan(-7, 0, 0)));
+
+            //Assert 
             Assert.AreEqual(expected.Success, actual.Success);
             Assert.AreEqual(expected.Message, actual.Message);
         }
@@ -85,6 +103,27 @@ namespace Acme.Biz.Tests
 
             //Assert
             //Expected exception
+        }
+
+        [TestMethod()]
+        public void PlaceOrderTest_4Parameters()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Saw", "");
+            var expected = new OperationResult(true,
+                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "\r\nDeliver By: 12/25/2015" +
+                "\r\nInstructions: Handle carefully");
+
+            //Act
+            var actual = vendor.PlaceOrder(product, 12,
+                new DateTimeOffset(2015, 12, 25, 0, 0, 0, new TimeSpan(-7, 0, 0)),
+                "Handle carefully");
+
+            //Assert 
+            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Message, actual.Message);
         }
     }
 }
