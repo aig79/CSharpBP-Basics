@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Acme.Biz.Tests
 {
     [TestClass()]
-    public class VendorTests
+    public class VendorTests6
     {
         [TestMethod()]
         public void SendWelcomeEmail_ValidCompany_Success()
@@ -64,7 +64,8 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
             var expected = new OperationResult(true,
-                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12");
+                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "\r\nInstructions: standard delivery");
 
             //Act
             var actual = vendor.PlaceOrder(product, 12);
@@ -81,7 +82,8 @@ namespace Acme.Biz.Tests
             var product = new Product(1, "Saw", "");
             var expected = new OperationResult(true,
                 "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
-                "\r\nDeliver By: 12/25/2015");
+                "\r\nDeliver By: 12/25/2015" +
+                "\r\nInstructions: standard delivery");
 
             //Act
             var actual = vendor.PlaceOrder(product, 12,
@@ -140,6 +142,23 @@ namespace Acme.Biz.Tests
                                 Vendor.SendCopy.No);
 
             //Assert 
+            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Message, actual.Message);
+        }
+        [TestMethod()]
+        public void PlaceOrder_NoDeliveryDate()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            var product = new Product(1, "Saw", "");
+            var expected = new OperationResult(true,
+                        "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                        "\r\nInstructions: Deliver to Suite 42");
+
+            //Act
+            var actual = vendor.PlaceOrder(product, 12,
+                                instructions:  "Deliver to Suite 42");
+            //Assert
             Assert.AreEqual(expected.Success, actual.Success);
             Assert.AreEqual(expected.Message, actual.Message);
         }
