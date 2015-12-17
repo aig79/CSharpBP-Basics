@@ -127,5 +127,10 @@ namespace Acme.Biz
                 " Available on: " +
                 AvailabilityDate?.ToShortDateString();
         }
+
+        public override string ToString()
+        {
+            return this.ProductName + " (" + this.ProductId + ")";
+        }
     }
 }
