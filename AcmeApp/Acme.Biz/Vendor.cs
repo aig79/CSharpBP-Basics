@@ -113,5 +113,11 @@ namespace Acme.Biz
 
             return vendorInfo;
         }
+
+        public string PrepareDirections()
+        {
+            var directions = @"Insert \r\n to define a new line";
+            return directions;
+        }
     }
 }
