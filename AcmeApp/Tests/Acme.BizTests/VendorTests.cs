@@ -99,7 +99,7 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
             var expected = new OperationResult(true,
-                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "Order from Acme, Inc\r\nProduct: Tools-0001\r\nQuantity: 12" +
                 "\r\nInstructions: standard delivery");
 
             //Act
@@ -116,7 +116,7 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
             var expected = new OperationResult(true,
-                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "Order from Acme, Inc\r\nProduct: Tools-0001\r\nQuantity: 12" +
                 "\r\nDeliver By: 12/25/2015" +
                 "\r\nInstructions: standard delivery");
 
@@ -149,7 +149,7 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
             var expected = new OperationResult(true,
-                "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                "Order from Acme, Inc\r\nProduct: Tools-0001\r\nQuantity: 12" +
                 "\r\nDeliver By: 12/25/2015" +
                 "\r\nInstructions: Handle carefully");
 
@@ -187,7 +187,7 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
             var expected = new OperationResult(true,
-                        "Order from Acme, Inc\r\nProduct: Tools-1\r\nQuantity: 12" +
+                        "Order from Acme, Inc\r\nProduct: Tools-0001\r\nQuantity: 12" +
                         "\r\nInstructions: Deliver to Suite 42");
 
             //Act
