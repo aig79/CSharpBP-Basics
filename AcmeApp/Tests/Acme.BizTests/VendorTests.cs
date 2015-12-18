@@ -10,6 +10,26 @@ using System.Threading.Tasks;
 namespace Acme.Biz.Tests
 {
     [TestClass()]
+    public class VendorTests
+    {
+        [TestMethod()]
+        public void ToStringTest()
+        {
+            //Arrange
+            var vendor = new Vendor();
+            vendor.VendorId = 1;
+            vendor.CompanyName = "ABC Corp";
+            var expected = "Vendor: ABC Corp";
+
+            //Act
+            var actual = vendor.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+    }
+
+    [TestClass()]
     public class VendorTests6
     {
         [TestMethod()]
